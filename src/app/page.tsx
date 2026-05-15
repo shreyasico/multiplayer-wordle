@@ -224,10 +224,11 @@ function HomeContent() {
           <ThemePicker />
         </div>
 
-        <p className="text-center text-xs mt-4 pb-2 animate-fade-in-up" style={{ animationDelay: "300ms", color: theme.textMuted }}>
-          made with ❤️ and claude by @shreyasico
-        </p>
       </div>
+
+      <p className="fixed bottom-0 left-0 right-0 text-center text-xs py-3 animate-fade-in-up" style={{ animationDelay: "300ms", color: theme.textMuted, background: theme.headerBg || "rgba(248,248,248,0.9)", backdropFilter: "blur(8px)" }}>
+        made with ❤️ and claude by @shreyasico
+      </p>
     </div>
   );
 }
