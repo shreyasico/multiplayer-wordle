@@ -3,6 +3,7 @@
 import { useParams, useSearchParams, useRouter } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import Game from "@/components/Game";
+import SoloGame from "@/components/SoloGame";
 
 function GameContent() {
   const params = useParams();
@@ -30,6 +31,18 @@ function GameContent() {
       <div className="min-h-screen flex items-center justify-center" style={{ background: "#f8f8f8" }}>
         <p className="text-zinc-500 animate-pulse">Redirecting...</p>
       </div>
+    );
+  }
+
+  // Solo and Daily modes use API routes (works on Vercel serverless)
+  // Multiplayer modes use Socket.IO (needs Railway or custom server)
+  if (mode === "solo" || mode === "daily") {
+    return (
+      <SoloGame
+        playerName={playerName}
+        mode={mode}
+        wordLength={length}
+      />
     );
   }
 
