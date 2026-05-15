@@ -18,9 +18,9 @@ export default function WordLengthPicker({
   const { theme } = useTheme();
 
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex flex-col items-center gap-2 w-full">
       <p className="text-sm font-medium" style={{ color: theme.textMuted }}>Word Length</p>
-      <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 w-full px-1">
+      <div className="grid grid-cols-8 gap-1.5 sm:gap-2 w-full">
         {LENGTHS.map((len) => {
           const isActive = value === len;
           return (
@@ -28,15 +28,15 @@ export default function WordLengthPicker({
               key={len}
               onClick={() => !disabled && onChange(len)}
               disabled={disabled}
-              className={`length-btn ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
+              className={`length-btn-grid ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
               style={
                 isActive
                   ? {
                       backgroundColor: "#6aaa64",
                       color: "white",
-                      transform: "scale(1.15)",
                       borderColor: "#6aaa64",
                       boxShadow: "0 0 12px rgba(106, 170, 100, 0.4)",
+                      transform: "scale(1.1)",
                     }
                   : {
                       backgroundColor: theme.inputBg,
