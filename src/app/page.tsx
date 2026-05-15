@@ -64,11 +64,11 @@ function HomeContent() {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 overflow-hidden relative">
+    <div className="min-h-screen flex items-start sm:items-center justify-center pt-6 sm:pt-0 px-4 pb-4 overflow-hidden relative">
       <div className="max-w-md w-full relative z-10">
-        <div className="text-center mb-8 animate-fade-in-up">
-          <div className="flex justify-center mb-3 animate-float">
-            <Mascot size={120} />
+        <div className="text-center mb-5 sm:mb-8 animate-fade-in-up">
+          <div className="flex justify-center mb-2 sm:mb-3 animate-float">
+            <Mascot size={90} />
           </div>
           <h1
             className="text-4xl sm:text-6xl font-bold tracking-tight mb-2 font-[family-name:var(--font-fredoka)]"
@@ -212,7 +212,7 @@ function HomeContent() {
           </button>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mt-6 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mt-4 sm:mt-6 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
           <div className="text-xs sm:text-sm space-y-1 text-center sm:text-left" style={{ color: theme.textMuted }}>
             <p>Guess the word in 6 tries &middot; 5 to 12 letters</p>
             <p>
@@ -223,10 +223,10 @@ function HomeContent() {
           </div>
           <ThemePicker />
         </div>
-      </div>
 
-      <div className="fixed bottom-4 right-4 text-xs animate-fade-in-up z-10" style={{ animationDelay: "300ms", color: theme.textMuted }}>
-        made with ❤️ and claude by @shreyasico
+        <p className="text-center text-xs mt-4 pb-2 animate-fade-in-up" style={{ animationDelay: "300ms", color: theme.textMuted }}>
+          made with ❤️ and claude by @shreyasico
+        </p>
       </div>
     </div>
   );

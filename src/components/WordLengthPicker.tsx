@@ -18,9 +18,9 @@ export default function WordLengthPicker({
   const { theme } = useTheme();
 
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col items-center gap-2">
       <p className="text-sm font-medium" style={{ color: theme.textMuted }}>Word Length</p>
-      <div className="flex flex-wrap justify-center gap-2">
+      <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 w-full px-1">
         {LENGTHS.map((len) => {
           const isActive = value === len;
           return (
