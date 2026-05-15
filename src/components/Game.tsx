@@ -288,16 +288,16 @@ export default function Game({
     <div className="min-h-screen flex flex-col">
       {showConfetti && <Confetti />}
       <header
-        className="border-b py-3 px-4 flex items-center justify-between backdrop-blur-sm"
+        className="border-b py-2.5 sm:py-3 px-3 sm:px-4 flex items-center justify-between backdrop-blur-sm"
         style={{ background: theme.headerBg, borderColor: theme.headerBorder }}
       >
         <a
           href="/"
-          className="text-xl font-bold tracking-wide hover:text-green-600 transition-colors font-[family-name:var(--font-fredoka)] flex items-center gap-1.5"
+          className="text-base sm:text-xl font-bold tracking-wide hover:text-green-600 transition-colors font-[family-name:var(--font-fredoka)] flex items-center gap-1 sm:gap-1.5"
         >
           <span className="animate-gentle-bounce inline-block">🟩</span> Wordly
         </a>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {actualRoomId && !isDaily && (
             <button
               onClick={copyInviteLink}

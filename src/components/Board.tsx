@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { MAX_GUESSES } from "@/lib/game";
 import type { TileData } from "@/lib/game";
 import Tile from "./Tile";
@@ -13,11 +13,12 @@ interface BoardProps {
   won?: boolean;
 }
 
-function getTileSize(wordLength: number): number {
-  const maxBoard = 520;
-  const gap = 6;
+function getTileSize(wordLength: number, screenWidth: number): number {
+  // Use screen width to determine max board width (with padding)
+  const maxBoard = Math.min(520, screenWidth - 32);
+  const gap = wordLength <= 8 ? 6 : 4;
   const computed = Math.floor((maxBoard - (wordLength - 1) * gap) / wordLength);
-  return Math.max(30, Math.min(58, computed));
+  return Math.max(28, Math.min(58, computed));
 }
 
 export default function Board({
@@ -30,6 +31,15 @@ export default function Board({
   const [revealingRow, setRevealingRow] = useState(-1);
   const [bounceRow, setBounceRow] = useState(-1);
   const prevGuessCount = useRef(guesses.length);
+  const [screenWidth, setScreenWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 400
+  );
+
+  useEffect(() => {
+    const onResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   useEffect(() => {
     if (guesses.length > prevGuessCount.current) {
@@ -55,7 +65,7 @@ export default function Board({
     prevGuessCount.current = guesses.length;
   }, [guesses.length, wordLength, won]);
 
-  const tileSize = getTileSize(wordLength);
+  const tileSize = getTileSize(wordLength, screenWidth);
   const gap = wordLength <= 8 ? 6 : 4;
   const rows: React.ReactNode[] = [];
 

@@ -275,7 +275,7 @@ export default function SoloGame({
     <div className="min-h-screen flex flex-col">
       {showConfetti && <Confetti />}
       <header
-        className="border-b py-3 px-4 flex items-center justify-between backdrop-blur-sm"
+        className="border-b py-2.5 sm:py-3 px-3 sm:px-4 flex items-center justify-between backdrop-blur-sm"
         style={{
           background: theme.headerBg,
           borderColor: theme.headerBorder,
@@ -283,17 +283,17 @@ export default function SoloGame({
       >
         <a
           href="/"
-          className="text-xl font-bold tracking-wide hover:text-green-600 transition-colors font-[family-name:var(--font-fredoka)] flex items-center gap-1.5"
+          className="text-base sm:text-xl font-bold tracking-wide hover:text-green-600 transition-colors font-[family-name:var(--font-fredoka)] flex items-center gap-1 sm:gap-1.5"
         >
           <span className="animate-gentle-bounce inline-block">🟩</span> Wordly
         </a>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {isDaily && (
-            <span className="text-sm font-medium px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700">
+            <span className="text-xs sm:text-sm font-medium px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-yellow-100 text-yellow-700">
               📅 Daily
             </span>
           )}
-          <span className="text-sm" style={{ color: theme.textMuted }}>
+          <span className="text-xs sm:text-sm" style={{ color: theme.textMuted }}>
             {wordLength} letters
           </span>
           <button
@@ -354,10 +354,10 @@ export default function SoloGame({
         </div>
       )}
 
-      <div className="flex-1 flex flex-col items-center justify-center gap-4 p-4">
+      <div className="flex-1 flex flex-col items-center justify-center gap-3 sm:gap-4 p-3 sm:p-4">
         {gameOver && (
           <div
-            className="text-center mb-4 animate-fade-in-scale cute-card rounded-2xl p-6"
+            className="text-center mb-3 sm:mb-4 animate-fade-in-scale cute-card rounded-2xl p-4 sm:p-6 mx-2"
             style={{
               background: theme.cardBg,
               borderColor: theme.cardBorder,
@@ -365,14 +365,14 @@ export default function SoloGame({
             }}
           >
             {won ? (
-              <p className="text-2xl font-bold mb-1 font-[family-name:var(--font-fredoka)]">
+              <p className="text-xl sm:text-2xl font-bold mb-1 font-[family-name:var(--font-fredoka)]">
                 <span className="text-green-600 animate-sparkle-in inline-block">
                   🎉 You won!
                 </span>
               </p>
             ) : (
               <p
-                className="text-2xl font-bold mb-1 font-[family-name:var(--font-fredoka)]"
+                className="text-xl sm:text-2xl font-bold mb-1 font-[family-name:var(--font-fredoka)]"
                 style={{ color: theme.textMuted }}
               >
                 Better luck next time! 💪

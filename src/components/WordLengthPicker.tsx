@@ -20,7 +20,7 @@ export default function WordLengthPicker({
   return (
     <div className="flex flex-col items-center gap-3">
       <p className="text-sm font-medium" style={{ color: theme.textMuted }}>Word Length</p>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap justify-center gap-2">
         {LENGTHS.map((len) => {
           const isActive = value === len;
           return (

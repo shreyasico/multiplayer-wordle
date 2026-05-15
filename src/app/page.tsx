@@ -71,7 +71,7 @@ function HomeContent() {
             <Mascot size={120} />
           </div>
           <h1
-            className="text-6xl font-bold tracking-tight mb-2 font-[family-name:var(--font-fredoka)]"
+            className="text-4xl sm:text-6xl font-bold tracking-tight mb-2 font-[family-name:var(--font-fredoka)]"
             style={{
               background: "linear-gradient(135deg, #2d7a2d 0%, #4a9e4a 50%, #2d7a2d 100%)",
               WebkitBackgroundClip: "text",
@@ -81,13 +81,13 @@ function HomeContent() {
           >
             Wordly
           </h1>
-          <p style={{ color: theme.textMuted }} className="text-lg font-medium">
+          <p style={{ color: theme.textMuted }} className="text-base sm:text-lg font-medium">
             Guess the word — solo or race your friends
           </p>
         </div>
 
         <div
-          className="cute-card backdrop-blur-sm rounded-3xl p-7 space-y-5 shadow-lg animate-fade-in-up"
+          className="cute-card backdrop-blur-sm rounded-3xl p-5 sm:p-7 space-y-4 sm:space-y-5 shadow-lg animate-fade-in-up"
           style={{ animationDelay: "100ms", background: theme.cardBg, borderColor: theme.cardBorder, borderWidth: 1 }}
         >
           <div>
@@ -118,7 +118,7 @@ function HomeContent() {
                 <button
                   key={m.key}
                   onClick={() => setMode(m.key)}
-                  className={`py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                  className={`py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                     mode === m.key
                       ? "bg-green-500 text-white shadow-lg shadow-green-500/20 scale-[1.02]"
                       : "hover:scale-[1.04]"
@@ -212,8 +212,8 @@ function HomeContent() {
           </button>
         </div>
 
-        <div className="flex justify-between items-center mt-6 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-          <div className="text-sm space-y-1" style={{ color: theme.textMuted }}>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mt-6 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+          <div className="text-xs sm:text-sm space-y-1 text-center sm:text-left" style={{ color: theme.textMuted }}>
             <p>Guess the word in 6 tries &middot; 5 to 12 letters</p>
             <p>
               <span className="text-green-600">Green</span> = correct spot,{" "}

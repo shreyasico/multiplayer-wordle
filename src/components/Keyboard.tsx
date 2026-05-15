@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import type { KeyboardState, LetterState } from "@/lib/game";
 
 const ROWS = [
@@ -34,10 +35,29 @@ export default function Keyboard({
   onKey,
   disabled,
 }: KeyboardProps) {
+  const [screenWidth, setScreenWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 400
+  );
+
+  useEffect(() => {
+    const onResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // Calculate key sizes based on screen width
+  // 10 keys + 9 gaps (4px each) in widest row
+  const maxKeyboardWidth = Math.min(500, screenWidth - 16);
+  const keyGap = screenWidth < 380 ? 3 : 4;
+  const keyWidth = Math.floor((maxKeyboardWidth - 9 * keyGap) / 10);
+  const keyHeight = Math.min(58, Math.max(42, keyWidth * 1.4));
+  const wideKeyWidth = Math.floor(keyWidth * 1.5);
+  const fontSize = screenWidth < 380 ? 11 : 13;
+
   return (
-    <div className="flex flex-col items-center gap-1.5">
+    <div className="flex flex-col items-center" style={{ gap: keyGap }}>
       {ROWS.map((row, i) => (
-        <div key={i} className="flex gap-1">
+        <div key={i} className="flex" style={{ gap: keyGap }}>
           {row.map((key) => {
             const state = keyboardState[key] || "unused";
             const isWide = key === "Enter" || key === "⌫";
@@ -46,8 +66,13 @@ export default function Keyboard({
                 key={key}
                 onClick={() => onKey(key)}
                 disabled={disabled}
-                className={`key-base ${isWide ? "px-3 text-xs" : "w-9"} h-14 ${disabled ? "opacity-40 cursor-not-allowed" : "hover:brightness-110"}`}
-                style={getKeyStyle(state)}
+                className={`key-base ${disabled ? "opacity-40 cursor-not-allowed" : "hover:brightness-110"}`}
+                style={{
+                  ...getKeyStyle(state),
+                  width: isWide ? wideKeyWidth : keyWidth,
+                  height: keyHeight,
+                  fontSize: isWide ? fontSize - 1 : fontSize,
+                }}
               >
                 {key}
               </button>
